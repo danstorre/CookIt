@@ -26,6 +26,7 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
+CookIt/CookIt/Credentials.swift
 
 ## Playgrounds
 timeline.xctimeline
