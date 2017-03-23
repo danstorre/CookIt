@@ -14,6 +14,11 @@
 		FBCCBD011E83764500791708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCCBD001E83764500791708 /* Assets.xcassets */; };
 		FBCCBD041E83764500791708 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCCBD021E83764500791708 /* LaunchScreen.storyboard */; };
 		FBCCBD0F1E83764600791708 /* CookItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD0E1E83764600791708 /* CookItTests.swift */; };
+		FBCCBD221E8376D400791708 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD1D1E8376D400791708 /* APIConstants.swift */; };
+		FBCCBD231E8376D400791708 /* CookItAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD1E1E8376D400791708 /* CookItAPI.swift */; };
+		FBCCBD241E8376D400791708 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD1F1E8376D400791708 /* Credentials.swift */; };
+		FBCCBD251E8376D400791708 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD201E8376D400791708 /* GCDBlackBox.swift */; };
+		FBCCBD261E8376D400791708 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD211E8376D400791708 /* Network.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +43,11 @@
 		FBCCBD0A1E83764600791708 /* CookItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CookItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCCBD0E1E83764600791708 /* CookItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookItTests.swift; sourceTree = "<group>"; };
 		FBCCBD101E83764600791708 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBCCBD1D1E8376D400791708 /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		FBCCBD1E1E8376D400791708 /* CookItAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookItAPI.swift; sourceTree = "<group>"; };
+		FBCCBD1F1E8376D400791708 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		FBCCBD201E8376D400791708 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
+		FBCCBD211E8376D400791708 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +116,10 @@
 		FBCCBD191E83764E00791708 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FBCCBD1D1E8376D400791708 /* APIConstants.swift */,
+				FBCCBD1E1E8376D400791708 /* CookItAPI.swift */,
+				FBCCBD201E8376D400791708 /* GCDBlackBox.swift */,
+				FBCCBD211E8376D400791708 /* Network.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -127,6 +141,7 @@
 		FBCCBD1C1E83766000791708 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FBCCBD1F1E8376D400791708 /* Credentials.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -236,9 +251,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBCCBD241E8376D400791708 /* Credentials.swift in Sources */,
+				FBCCBD221E8376D400791708 /* APIConstants.swift in Sources */,
+				FBCCBD261E8376D400791708 /* Network.swift in Sources */,
+				FBCCBD231E8376D400791708 /* CookItAPI.swift in Sources */,
 				FBCCBCFF1E83764500791708 /* CookIt.xcdatamodeld in Sources */,
 				FBCCBCF91E83764500791708 /* ViewController.swift in Sources */,
 				FBCCBCF71E83764500791708 /* AppDelegate.swift in Sources */,
+				FBCCBD251E8376D400791708 /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
