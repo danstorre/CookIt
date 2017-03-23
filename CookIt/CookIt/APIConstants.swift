@@ -43,15 +43,18 @@ struct APIConstants {
     // MARK: JSON Body Keys
     struct JSONBodyKeys {
         
-        static let updateAt = "updateAt"
-    
     }
     
     // MARK: JSON Body Response Keys
     struct JSONBodyResponseKeys {
         
-        //List Student Locations
+        //Search Recipes
         static let results = "results"
+        static let id = "id"
+        static let title = "title"
+        static let readyInMinutes = "readyInMinutes"
+        static let image = "image"
+        static let baseUri = "baseUri"
         
         
     }

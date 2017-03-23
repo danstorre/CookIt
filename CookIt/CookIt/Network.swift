@@ -206,9 +206,12 @@ private extension Network {
         completionHandlerForConvertData(parsedResult, nil)
     }
     
+}
+
+extension Network {
     
-    // Create Request for PARSE
-    func createRequestForParseWith(request : NSMutableURLRequest, method: HttpMethods, and jsonBody : Data?) -> NSMutableURLRequest{
+    // Create Request for Cookit API
+    func createRequestWith(request : NSMutableURLRequest, method: HttpMethods, and jsonBody : Data?) -> NSMutableURLRequest{
         
         request.httpMethod = method.rawValue
         

@@ -19,6 +19,8 @@
 		FBCCBD241E8376D400791708 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD1F1E8376D400791708 /* Credentials.swift */; };
 		FBCCBD251E8376D400791708 /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD201E8376D400791708 /* GCDBlackBox.swift */; };
 		FBCCBD261E8376D400791708 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD211E8376D400791708 /* Network.swift */; };
+		FBCCBD2A1E837BE100791708 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD291E837BE100791708 /* Recipe.swift */; };
+		FBCCBD2C1E83867900791708 /* CookItAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD2B1E83867900791708 /* CookItAPITest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		FBCCBD1F1E8376D400791708 /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		FBCCBD201E8376D400791708 /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 		FBCCBD211E8376D400791708 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		FBCCBD291E837BE100791708 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		FBCCBD2B1E83867900791708 /* CookItAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookItAPITest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 			children = (
 				FBCCBD0E1E83764600791708 /* CookItTests.swift */,
 				FBCCBD101E83764600791708 /* Info.plist */,
+				FBCCBD2B1E83867900791708 /* CookItAPITest.swift */,
 			);
 			path = CookItTests;
 			sourceTree = "<group>";
@@ -116,7 +121,6 @@
 		FBCCBD191E83764E00791708 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
-				FBCCBD1D1E8376D400791708 /* APIConstants.swift */,
 				FBCCBD1E1E8376D400791708 /* CookItAPI.swift */,
 				FBCCBD201E8376D400791708 /* GCDBlackBox.swift */,
 				FBCCBD211E8376D400791708 /* Network.swift */,
@@ -141,7 +145,9 @@
 		FBCCBD1C1E83766000791708 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FBCCBD1D1E8376D400791708 /* APIConstants.swift */,
 				FBCCBD1F1E8376D400791708 /* Credentials.swift */,
+				FBCCBD291E837BE100791708 /* Recipe.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -257,6 +263,7 @@
 				FBCCBD231E8376D400791708 /* CookItAPI.swift in Sources */,
 				FBCCBCFF1E83764500791708 /* CookIt.xcdatamodeld in Sources */,
 				FBCCBCF91E83764500791708 /* ViewController.swift in Sources */,
+				FBCCBD2A1E837BE100791708 /* Recipe.swift in Sources */,
 				FBCCBCF71E83764500791708 /* AppDelegate.swift in Sources */,
 				FBCCBD251E8376D400791708 /* GCDBlackBox.swift in Sources */,
 			);
@@ -267,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBCCBD0F1E83764600791708 /* CookItTests.swift in Sources */,
+				FBCCBD2C1E83867900791708 /* CookItAPITest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +474,7 @@
 				FBCCBD151E83764600791708 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FBCCBD161E83764600791708 /* Build configuration list for PBXNativeTarget "CookItTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +483,7 @@
 				FBCCBD181E83764600791708 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
