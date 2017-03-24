@@ -217,8 +217,8 @@ extension Network {
         
         
         if let headers = headers {
-            for (value,headerName) in headers{
-                request.addValue(value, forHTTPHeaderField: headerName)
+            for (headerName,value) in headers{
+                request.setValue(value, forHTTPHeaderField: headerName)
             }
         }
 

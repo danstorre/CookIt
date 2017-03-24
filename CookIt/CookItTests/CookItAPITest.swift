@@ -12,14 +12,12 @@ import XCTest
 class CookItAPITest: XCTestCase {
     
     
-    func test_GetSessionID_SessionID() {
+    func test_GetREcipes_Recipes() {
         
-        let cookItAPI = CookItAPI()
         let expectations = expectation(description: "Recipes searched")
         
-        cookItAPI.getRecipes(by: ("chinese","salad")) { (recipes, error) in
+        CookItAPI.shared.getRecipes(by: ("chinese","salad")) { (recipes, error) in
             guard error == nil else {
-                
                 print(error!.localizedDescription)
                 return XCTFail("error returned")
             }
@@ -33,8 +31,30 @@ class CookItAPITest: XCTestCase {
             
         }
         
-        waitForExpectations(timeout: 60.0, handler:nil)
+        waitForExpectations(timeout: 30, handler:nil)
         
+    }
+    
+    func test_GetRecipe_Recipe() {
+        
+        let expectations = expectation(description: "Search Recipe")
+        
+        CookItAPI.shared.getRecipe(by: "156992") { (recipe, error) in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return XCTFail("error returned")
+            }
+            
+            guard let recipe = recipe else {
+                return XCTFail("no recipes returned")
+            }
+            print(recipe)
+            XCTAssert(true)
+            expectations.fulfill()
+        }
+        
+        waitForExpectations(timeout: 30, handler:nil)
+    
     }
     
 }

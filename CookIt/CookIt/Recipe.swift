@@ -11,13 +11,27 @@ import UIKit
 
 struct Recipe {
     
+    // list properties
     var id : Int?
     var title : String?
     var readyInMinutes : Int?
     var image : UIImage?
     var baseUri : String?
     
-    init(id : Int, title : String, readyInMinutes : Int? = nil, image : UIImage? = nil, baseUri : String? = nil){
+    // recipe information properties
+    var vegetarian : Bool?
+    var glutenFree : Bool?
+    var cheap : Bool?
+    var sustainable : Bool?
+    var servings : Int?
+    var instructions : String?
+    
+    var ingredients: [Ingredient]?
+    
+    //var extendedIngredients : Bool?
+    
+    init(id : Int, title : String, readyInMinutes : Int? = nil, image : UIImage? = nil, baseUri : String? = nil,
+         ingredients: [Ingredient]? = nil){
         self.id = id
         self.title = title
         self.readyInMinutes = readyInMinutes
@@ -29,28 +43,48 @@ struct Recipe {
         self.id = 0
         self.title = ""
         self.readyInMinutes = 0
-        self.image = nil
-        self.baseUri = nil
     }
     
     init(dictionary: [String:AnyObject]){
         
-        if let id = dictionary[APIConstants.JSONBodyResponseKeys.id] as? Int {
+        if let id = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.id] as? Int {
             self.id = id
         }
         
-        if let title = dictionary[APIConstants.JSONBodyResponseKeys.title] as? String {
+        if let title = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.title] as? String {
             self.title = title
         }
 
-        if let readyInMinutes = dictionary[APIConstants.JSONBodyResponseKeys.readyInMinutes] as? Int {
+        if let readyInMinutes = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.readyInMinutes] as? Int {
             self.readyInMinutes = readyInMinutes
         }
         
-        self.image = UIImage()
-        
-        if let baseUri = dictionary[APIConstants.JSONBodyResponseKeys.baseUri] as? String {
+        if let baseUri = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.baseUri] as? String {
             self.baseUri = baseUri
+        }
+        
+        if let vegetarian = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.vegetarian] as? Bool {
+            self.vegetarian = vegetarian
+        }
+        
+        if let glutenFree = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.glutenFree] as? Bool {
+            self.glutenFree = glutenFree
+        }
+        
+        if let cheap = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.cheap] as? Bool {
+            self.cheap = cheap
+        }
+
+        if let sustainable = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.sustainable] as? Bool {
+            self.sustainable = sustainable
+        }
+        
+        if let servings = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.servings] as? Int {
+            self.servings = servings
+        }
+        
+        if let instructions = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.instructions] as? String {
+            self.instructions = instructions
         }
         
     }

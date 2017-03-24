@@ -12,19 +12,25 @@ import UIKit
 protocol CookItProtocol {
     
     func getRecipes(by options: (String,String),completionHandlerForGettingRecipes: @escaping (_ recipes: [Recipe]?, _ error: NSError?) -> Void)
+    func getRecipe(by id: String, completionHandlerForGettingRecipe: @escaping (_ recipe: Recipe?, _ error: NSError?) -> Void)
+    
+    func getComplexRecipe(by options: (String,String), completionHandlerForGettingRecipe: @escaping (_ recipe: Recipe?, _ error: NSError?) -> Void)
     
 }
 
 
 class CookItAPI: CookItProtocol {
     
+
+    
+    static let shared = CookItAPI()
     
     let networkController = Network()
     
     init(){
         networkController.headers = [
             "Accept": "application/json",
-            "X-Mashape-Key": "DXhfvCtPYVmsh0xsHscEdng0eguRp1EuKZDjsn1U6Y919tt8O4"
+            "X-Mashape-Key": Credentials.mashapeKey
         ]
         
         networkController.host = "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
@@ -46,7 +52,7 @@ class CookItAPI: CookItProtocol {
         
         /* 2. Build the URL & Configure the request*/
         
-        var request = NSMutableURLRequest(url: networkController.parseURLFromParameters(parameters, withPathExtension: APIConstants.Methods.searchRecipe))
+        var request = NSMutableURLRequest(url: networkController.parseURLFromParameters(parameters, withPathExtension: APIConstants.Methods.searchRecipes))
         
         request = networkController.createRequestWith(request: request, method: .get, and: nil)
 
@@ -64,8 +70,8 @@ class CookItAPI: CookItProtocol {
                 return sendError("getRecipe returns an error")
             }
             
-            guard let resultsDictOfRecipes = result?[APIConstants.JSONBodyResponseKeys.results] as? [[String:AnyObject]] else {
-                return sendError("Could not find \(APIConstants.JSONBodyResponseKeys.results) in \(result)")
+            guard let resultsDictOfRecipes = result?[APIConstants.JSONBodyResponseKeys.Recipe.results] as? [[String:AnyObject]] else {
+                return sendError("Could not find \(APIConstants.JSONBodyResponseKeys.Recipe.results) in \(result)")
             }
             
             let recipes = Recipe.arrayOfRecipes(from: resultsDictOfRecipes)
@@ -77,4 +83,58 @@ class CookItAPI: CookItProtocol {
     }
 
     
+    func getRecipe(by id: String, completionHandlerForGettingRecipe: @escaping (Recipe?, NSError?) -> Void) {
+     
+        /* 1. Set the parameters */
+        
+        let parameters : [String:AnyObject] = [
+            APIConstants.UrlKeys.id : id as AnyObject,
+        ]
+        
+        /* 2. Build the URL & Configure the request*/
+        
+        var request = NSMutableURLRequest(url: networkController.parseURLFromParameters(parameters, withPathExtension: addIdToMethod(APIConstants.Methods.searchRecipeInformation, with: id)))
+        
+        request = networkController.createRequestWith(request: request, method: .get, and: nil)
+
+        /* 4. Make the request */
+        
+        networkController.taskForGetMethod(request: request, completionHandlerForGET: { (result,error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForGettingRecipe(nil, NSError(domain: "getRecipe", code: 1, userInfo: userInfo))
+            }
+            
+            guard error == nil else {
+                return sendError("getRecipe returns an error")
+            }
+            
+            guard let dictionaryResult = result as? [String:AnyObject] else {
+                return sendError("There was no results from getRecipe query")
+            }
+            
+            guard let ingredientsFromResult = result?[APIConstants.JSONBodyResponseKeys.Recipe.extendedIngredients] as? [[String:AnyObject]] else {
+                return sendError("There was no results from getRecipe query")
+            }
+            
+            let ingredients = Ingredient.arrayOfIngredients(from: ingredientsFromResult)
+            var recipe = Recipe(dictionary: dictionaryResult)
+            
+            recipe.ingredients = ingredients
+            
+            completionHandlerForGettingRecipe(recipe, nil)
+            
+        })
+        
+    }
+    
+}
+
+private extension CookItAPI {
+
+    func addIdToMethod(_ method: String, with id: String) -> String{
+        return method.replacingOccurrences(of: "{id}", with: id)
+    }
 }
