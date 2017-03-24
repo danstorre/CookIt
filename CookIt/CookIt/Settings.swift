@@ -9,23 +9,28 @@
 import Foundation
 
 struct Settings {
+    
+    static var shared = Settings()
 
     enum Ranking : Int {
         case maxUsedIngredients = 1, minMissingIngredients
     }
     
-    var cuisine: String?
-    var type: String?
-    var ranking: Int?
+    var cuisine: ConstantsGeneral.Cuisine?
+    var type: ConstantsGeneral.TypeDish?
+    var ranking: Ranking
     
-    init(cuisine: String, type: String, ranking: Ranking = .maxUsedIngredients){
+    init(cuisine: ConstantsGeneral.Cuisine, type: ConstantsGeneral.TypeDish, ranking: Ranking = .maxUsedIngredients){
+        self.cuisine = cuisine
+        self.type = type
+        self.ranking = ranking
+    }
     
-    
+    init(){
+        ranking = Ranking.maxUsedIngredients
     }
     
     /*setting
-      //selected by the user in navigation
-      //selected by the user in navigation
      maxCalories
      maxCarbs
      maxFat

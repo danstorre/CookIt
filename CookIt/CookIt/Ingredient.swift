@@ -19,6 +19,10 @@ struct Ingredient {
     var unitShort: String?
     var unitLong: String?
     var originalString: String? // whole description of ingredient
+    
+    init(name: String) {
+        self.name = name
+    }
 
     init(id: Int,
      aisle: String, //the generic name of the ingredient

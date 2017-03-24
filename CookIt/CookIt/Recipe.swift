@@ -26,6 +26,11 @@ struct Recipe {
     var servings : Int?
     var instructions : String?
     
+    var calories : Int?
+    var protein : String?
+    var fat : String?
+    var carbs : String?
+    
     var ingredients: [Ingredient]?
     
     //var extendedIngredients : Bool?
@@ -81,6 +86,22 @@ struct Recipe {
         
         if let servings = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.servings] as? Int {
             self.servings = servings
+        }
+        
+        if let calories = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.calories] as? Int {
+            self.calories = calories
+        }
+        
+        if let protein = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.protein] as? String {
+            self.protein = protein
+        }
+        
+        if let fat = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.fat] as? String {
+            self.fat = fat
+        }
+        
+        if let carbs = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.carbs] as? String {
+            self.carbs = carbs
         }
         
         if let instructions = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.instructions] as? String {

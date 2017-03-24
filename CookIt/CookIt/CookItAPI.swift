@@ -13,8 +13,7 @@ protocol CookItProtocol {
     
     func getRecipes(by options: (String,String),completionHandlerForGettingRecipes: @escaping (_ recipes: [Recipe]?, _ error: NSError?) -> Void)
     func getRecipe(by id: String, completionHandlerForGettingRecipe: @escaping (_ recipe: Recipe?, _ error: NSError?) -> Void)
-    
-    func getComplexRecipe(by options: (String,String), completionHandlerForGettingRecipe: @escaping (_ recipe: Recipe?, _ error: NSError?) -> Void)
+    func getComplexRecipes(completionHandlerForGettingRecipes: @escaping (_ recipes: [Recipe]?, _ error: NSError?) -> Void)
     
 }
 
@@ -88,7 +87,7 @@ class CookItAPI: CookItProtocol {
         /* 1. Set the parameters */
         
         let parameters : [String:AnyObject] = [
-            APIConstants.UrlKeys.id : id as AnyObject,
+            APIConstants.UrlKeys.id : id as AnyObject
         ]
         
         /* 2. Build the URL & Configure the request*/
@@ -129,6 +128,74 @@ class CookItAPI: CookItProtocol {
         })
         
     }
+    
+    func getComplexRecipes(completionHandlerForGettingRecipes completionHandlerForGettingComplexRecipe: @escaping ([Recipe]?, NSError?) -> Void) {
+        
+        
+        /* 1. Set the parameters */
+        let userProfile = UserProfile.shared
+        let settings = Settings.shared
+        
+        let randomPage = Int(arc4random_uniform(900))
+        
+        
+        guard let type = settings.type?.rawValue else{
+            return
+        }
+        
+        var parameters : [String:AnyObject] = [
+            APIConstants.UrlKeys.ranking : settings.ranking.rawValue as AnyObject,
+            APIConstants.UrlKeys.limitLicense : false as AnyObject,
+            APIConstants.UrlKeys.number : 20 as AnyObject,
+            APIConstants.UrlKeys.query : type as AnyObject,
+            APIConstants.UrlKeys.offset : randomPage as AnyObject
+        ]
+        
+        if let cuisine = settings.cuisine {
+            parameters[APIConstants.UrlKeys.cuisine] = cuisine.rawValue as AnyObject
+        }
+        
+        if let includeIngredients = userProfile.includeIngredients {
+            let array : String = includeIngredients.map({$0.name!}).reduce(""){(text: String, name: String) -> String in
+                return text + " \(name)"
+            }
+            parameters[APIConstants.UrlKeys.includeIngredients] = array as AnyObject
+        }
+        
+        /* 2. Build the URL & Configure the request*/
+        
+        var request = NSMutableURLRequest(url: networkController.parseURLFromParameters(parameters, withPathExtension: APIConstants.Methods.searchComplexRecipe))
+        
+        request = networkController.createRequestWith(request: request, method: .get, and: nil)
+        
+        
+        /* 4. Make the request */
+        
+        networkController.taskForGetMethod(request: request, completionHandlerForGET: { (result,error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForGettingComplexRecipe(nil, NSError(domain: "getRecipe", code: 1, userInfo: userInfo))
+            }
+            
+            guard error == nil else {
+                return sendError("getRecipe returns an error")
+            }
+            
+            guard let resultsDictOfRecipes = result?[APIConstants.JSONBodyResponseKeys.Recipe.results] as? [[String:AnyObject]] else {
+                return sendError("Could not find \(APIConstants.JSONBodyResponseKeys.Recipe.results) in \(result)")
+            }
+            
+            let recipes = Recipe.arrayOfRecipes(from: resultsDictOfRecipes)
+            
+            completionHandlerForGettingComplexRecipe(recipes, nil)
+            
+        })
+
+        
+    }
+
     
 }
 

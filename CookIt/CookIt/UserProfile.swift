@@ -10,7 +10,7 @@ import Foundation
 
 struct UserProfile {
     
-    static let shared : UserProfile = UserProfile()
+    static var shared : UserProfile = UserProfile()
 
     var excludeIngredients : [Ingredient]? 
     var includeIngredients : [Ingredient]?

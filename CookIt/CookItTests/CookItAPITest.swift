@@ -57,4 +57,35 @@ class CookItAPITest: XCTestCase {
     
     }
     
+    func test_GetRecipeComplex_Recipes() {
+        
+        let expectations = expectation(description: "Search Recipe")
+        
+        let egg = Ingredient(name: "egg")
+        let onion = Ingredient(name: "onion")
+        
+        Settings.shared.cuisine = ConstantsGeneral.Cuisine.american
+        Settings.shared.type = ConstantsGeneral.TypeDish.mainCourse
+        
+        UserProfile.shared.includeIngredients = [egg,onion]
+        
+        CookItAPI.shared.getComplexRecipes { (recipe, error) in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return XCTFail("error returned")
+            }
+            
+            guard let recipe = recipe else {
+                return XCTFail("no recipes returned")
+            }
+            print(recipe)
+            XCTAssert(true)
+            expectations.fulfill()
+        }
+        
+        waitForExpectations(timeout: 180, handler:nil)
+        
+    }
+    
+    
 }

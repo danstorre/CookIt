@@ -85,6 +85,11 @@ struct APIConstants {
             static let servings = "servings"
             static let extendedIngredients = "extendedIngredients"
             static let instructions = "instructions"
+            
+            static let calories = "calories"
+            static let protein = "protein"
+            static let fat = "fat"
+            static let carbs = "carbs"
         }
         
         // Ingredient
