@@ -87,5 +87,49 @@ class CookItAPITest: XCTestCase {
         
     }
     
+    func test_GetIngredient_Ingredient() {
+        
+        let expectations = expectation(description: "Search Recipe")
+        
+        CookItAPI.shared.getIngredient(by: "gluten-free-veggie-burger-759739.jpg") { (image, error) in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return XCTFail("error returned")
+            }
+            
+            guard let image = image else {
+                return XCTFail("no recipes returned")
+            }
+            print(image)
+            XCTAssert(true)
+            expectations.fulfill()
+        }
+        
+        waitForExpectations(timeout: 30, handler:nil)
+        
+    }
+    
+    func test_GetImage_Image() {
+        
+        let expectations = expectation(description: "Search Image")
+        
+        CookItAPI.shared.getImage(by: "gluten-free-veggie-burger-759739.jpg", with: ConstantsGeneral.ImageSize.m) { (image, error) in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return XCTFail("error returned")
+            }
+            
+            guard let image = image else {
+                return XCTFail("no recipes returned")
+            }
+            print(image)
+            XCTAssert(true)
+            expectations.fulfill()
+        }
+        
+        waitForExpectations(timeout: 30, handler:nil)
+        
+    }
+    
     
 }

@@ -19,6 +19,8 @@ struct Ingredient {
     var unitShort: String?
     var unitLong: String?
     var originalString: String? // whole description of ingredient
+    var stringImage: String?
+    var image: UIImage?
     
     init(name: String) {
         self.name = name
@@ -77,6 +79,9 @@ struct Ingredient {
             self.originalString = originalString
         }
         
+        if let stringImage = dictionary[APIConstants.JSONBodyResponseKeys.Ingredient.image] as? String{
+            self.stringImage = stringImage
+        }
     }
     
     static func arrayOfIngredients(from dictionary: [[String:AnyObject]]) -> [Ingredient]{

@@ -17,6 +17,7 @@ struct APIConstants {
         static let apiScheme = "https"
         static let apiHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
         static let mashapeKey = Credentials.mashapeKey
+        static let hostRecipeImages = "https://spoonacular.com/recipeImages/"
         
     }
     
@@ -26,6 +27,7 @@ struct APIConstants {
         static let searchRecipes = "/recipes/search"
         static let searchRecipeInformation = "/recipes/{id}/information"
         static let searchComplexRecipe = "/recipes/searchComplex"
+        static let searchAutocompleteIngredients = "/food/ingredients/autocomplete"
         
     }
     
@@ -57,6 +59,10 @@ struct APIConstants {
         static let minFat = "minFat"
         static let minProtein = "minProtein"
         static let ranking = "ranking"
+        
+        // Search AutoComplete Ingredients
+        
+        static let metaInformation = "metaInformation"
         
     }
     
@@ -102,6 +108,7 @@ struct APIConstants {
             static let unitShort = "unitShort"
             static let unitLong = "unitLong"
             static let originalString = "originalString" // whole description of ingredient
+            static let image = "image"
         }
         
         

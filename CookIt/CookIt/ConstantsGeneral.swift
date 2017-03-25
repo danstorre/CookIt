@@ -40,5 +40,16 @@ struct ConstantsGeneral {
         case mainCourse = "main course"
         case sideDish = "side dish"
     }
-
+    
+    enum ImageSize: String {
+        case xxs = "90x90"
+        case xs = "240x150"
+        case s = "312x150"
+        case m = "312x231"
+        case l = "480x360"
+        case xl = "556x370"
+        case xxl = "636x393"
+    }
+    
+    
 }

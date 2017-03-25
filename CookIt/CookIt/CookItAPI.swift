@@ -12,15 +12,19 @@ import UIKit
 protocol CookItProtocol {
     
     func getRecipes(by options: (String,String),completionHandlerForGettingRecipes: @escaping (_ recipes: [Recipe]?, _ error: NSError?) -> Void)
+    
     func getRecipe(by id: String, completionHandlerForGettingRecipe: @escaping (_ recipe: Recipe?, _ error: NSError?) -> Void)
+    
     func getComplexRecipes(completionHandlerForGettingRecipes: @escaping (_ recipes: [Recipe]?, _ error: NSError?) -> Void)
+    
+    func getIngredient(by query: String, completionHandlerForGettingIngredient: @escaping (_ recipes: [Ingredient]?, _ error: NSError?) -> Void)
+    
+    func getImage(by image: String, with size: ConstantsGeneral.ImageSize, completionHandlerForGettingImage: @escaping (_ recipes: UIImage?, _ error: NSError?) -> Void)
     
 }
 
 
 class CookItAPI: CookItProtocol {
-    
-
     
     static let shared = CookItAPI()
     
@@ -131,13 +135,11 @@ class CookItAPI: CookItProtocol {
     
     func getComplexRecipes(completionHandlerForGettingRecipes completionHandlerForGettingComplexRecipe: @escaping ([Recipe]?, NSError?) -> Void) {
         
-        
         /* 1. Set the parameters */
         let userProfile = UserProfile.shared
         let settings = Settings.shared
         
         let randomPage = Int(arc4random_uniform(900))
-        
         
         guard let type = settings.type?.rawValue else{
             return
@@ -192,11 +194,63 @@ class CookItAPI: CookItProtocol {
             completionHandlerForGettingComplexRecipe(recipes, nil)
             
         })
-
+    }
+    
+    func getIngredient(by query: String, completionHandlerForGettingIngredient: @escaping ([Ingredient]?, NSError?) -> Void) {
         
+        /* 1. Set the parameters */
+        
+        let parameters : [String:AnyObject] = [
+            APIConstants.UrlKeys.metaInformation : "true" as AnyObject,
+            APIConstants.UrlKeys.number : 10 as AnyObject,
+            APIConstants.UrlKeys.query : query as AnyObject
+        ]
+        
+        /* 2. Build the URL & Configure the request*/
+        
+        var request = NSMutableURLRequest(url: networkController.parseURLFromParameters(parameters, withPathExtension: APIConstants.Methods.searchAutocompleteIngredients))
+        
+        request = networkController.createRequestWith(request: request, method: .get, and: nil)
+        
+        /* 4. Make the request */
+        
+        networkController.taskForGetMethod(request: request, completionHandlerForGET: { (result,error) in
+            
+            func sendError(_ error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForGettingIngredient(nil, NSError(domain: "getIngredient", code: 1, userInfo: userInfo))
+            }
+            
+            guard error == nil else {
+                return sendError("getRecipe returns an error")
+            }
+            
+            guard let dictionaryResult = result as? [[String:AnyObject]] else {
+                return sendError("There was no results from getIngredient query")
+            }
+            
+            let ingredients = Ingredient.arrayOfIngredients(from: dictionaryResult)
+            
+            completionHandlerForGettingIngredient(ingredients, nil)
+            
+        })
+    }
+    
+    func getImage(by image: String, with size: ConstantsGeneral.ImageSize, completionHandlerForGettingImage: @escaping (UIImage?, NSError?) -> Void) {
+        
+        let imageURL = APIConstants.BasicConstants.hostRecipeImages + image
+        let url = URL(string: imageURL)
+        
+        guard let data = try? Data(contentsOf: url!) else {
+            let userInfo = [NSLocalizedDescriptionKey : "url is wrong for the image \(image)"]
+            return completionHandlerForGettingImage(nil,NSError(domain: "getIngredient", code: 1, userInfo: userInfo))
+        }
+        
+        completionHandlerForGettingImage(UIImage(data: data),nil)
+
     }
 
-    
 }
 
 private extension CookItAPI {
@@ -204,4 +258,5 @@ private extension CookItAPI {
     func addIdToMethod(_ method: String, with id: String) -> String{
         return method.replacingOccurrences(of: "{id}", with: id)
     }
+    
 }
