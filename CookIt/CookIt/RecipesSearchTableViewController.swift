@@ -24,7 +24,6 @@ class RecipesSearchTableViewController: UIViewController {
     
     override func viewDidLoad() {
         
-    
         super.viewDidLoad()
         
         option = option ?? 0
