@@ -16,6 +16,7 @@ struct Recipe {
     var title : String?
     var readyInMinutes : Int?
     var image : UIImage?
+    var imageString : String?
     var baseUri : String?
     
     // recipe information properties
@@ -106,6 +107,10 @@ struct Recipe {
         
         if let instructions = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.instructions] as? String {
             self.instructions = instructions
+        }
+        
+        if let imageString = dictionary[APIConstants.JSONBodyResponseKeys.Recipe.image] as? String {
+            self.imageString = imageString
         }
         
     }

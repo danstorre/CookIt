@@ -19,7 +19,7 @@ protocol CookItProtocol {
     
     func getIngredient(by query: String, completionHandlerForGettingIngredient: @escaping (_ recipes: [Ingredient]?, _ error: NSError?) -> Void)
     
-    func getImage(by image: String, with size: ConstantsGeneral.ImageSize, completionHandlerForGettingImage: @escaping (_ recipes: UIImage?, _ error: NSError?) -> Void)
+    func getImage(by imageID: String, with size: ConstantsGeneral.ImageSize, completionHandlerForGettingImage: @escaping (_ recipes: UIImage?, _ error: NSError?) -> Void)
     
 }
 
@@ -237,13 +237,13 @@ class CookItAPI: CookItProtocol {
         })
     }
     
-    func getImage(by image: String, with size: ConstantsGeneral.ImageSize, completionHandlerForGettingImage: @escaping (UIImage?, NSError?) -> Void) {
+    func getImage(by imageID: String, with size: ConstantsGeneral.ImageSize, completionHandlerForGettingImage: @escaping (UIImage?, NSError?) -> Void) {
         
-        let imageURL = APIConstants.BasicConstants.hostRecipeImages + image
+        let imageURL = APIConstants.BasicConstants.hostRecipeImages + imageID + "-" + size.rawValue + ".jpg"
         let url = URL(string: imageURL)
         
         guard let data = try? Data(contentsOf: url!) else {
-            let userInfo = [NSLocalizedDescriptionKey : "url is wrong for the image \(image)"]
+            let userInfo = [NSLocalizedDescriptionKey : "url is wrong for the image \(imageID)"]
             return completionHandlerForGettingImage(nil,NSError(domain: "getIngredient", code: 1, userInfo: userInfo))
         }
         

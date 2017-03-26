@@ -113,7 +113,7 @@ class CookItAPITest: XCTestCase {
         
         let expectations = expectation(description: "Search Image")
         
-        CookItAPI.shared.getImage(by: "gluten-free-veggie-burger-759739.jpg", with: ConstantsGeneral.ImageSize.m) { (image, error) in
+        CookItAPI.shared.getImage(by: "616564", with: ConstantsGeneral.ImageSize.xxs) { (image, error) in
             guard error == nil else {
                 print(error!.localizedDescription)
                 return XCTFail("error returned")

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB7906641E8700E200E07CAA /* RecipesSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7906631E8700E200E07CAA /* RecipesSearchTableViewController.swift */; };
+		FB7906661E87106D00E07CAA /* HeaderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7906651E87106D00E07CAA /* HeaderCellTableViewCell.swift */; };
+		FB7906681E8720BD00E07CAA /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7906671E8720BD00E07CAA /* ExtensionViewController.swift */; };
+		FB79066A1E873CAF00E07CAA /* RecipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7906691E873CAF00E07CAA /* RecipeTableViewCell.swift */; };
 		FBA3644C1E857CB60020F65F /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA3644B1E857CB60020F65F /* Ingredient.swift */; };
 		FBA3644E1E85A1CE0020F65F /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA3644D1E85A1CE0020F65F /* UserProfile.swift */; };
 		FBA364501E85A4460020F65F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA3644F1E85A4460020F65F /* Settings.swift */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB7906631E8700E200E07CAA /* RecipesSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesSearchTableViewController.swift; sourceTree = "<group>"; };
+		FB7906651E87106D00E07CAA /* HeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCellTableViewCell.swift; sourceTree = "<group>"; };
+		FB7906671E8720BD00E07CAA /* ExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
+		FB7906691E873CAF00E07CAA /* RecipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeTableViewCell.swift; sourceTree = "<group>"; };
 		FBA3644B1E857CB60020F65F /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		FBA3644D1E85A1CE0020F65F /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		FBA3644F1E85A4460020F65F /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -129,6 +137,8 @@
 		FBCCBD191E83764E00791708 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FB7906671E8720BD00E07CAA /* ExtensionViewController.swift */,
+				FB7906631E8700E200E07CAA /* RecipesSearchTableViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -136,6 +146,8 @@
 		FBCCBD1A1E83765600791708 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FB7906651E87106D00E07CAA /* HeaderCellTableViewCell.swift */,
+				FB7906691E873CAF00E07CAA /* RecipeTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -271,16 +283,20 @@
 			files = (
 				FBCCBD241E8376D400791708 /* Credentials.swift in Sources */,
 				FBCCBD221E8376D400791708 /* APIConstants.swift in Sources */,
+				FB7906661E87106D00E07CAA /* HeaderCellTableViewCell.swift in Sources */,
 				FBA3644C1E857CB60020F65F /* Ingredient.swift in Sources */,
+				FB7906681E8720BD00E07CAA /* ExtensionViewController.swift in Sources */,
 				FBCCBD261E8376D400791708 /* Network.swift in Sources */,
 				FBCCBD231E8376D400791708 /* CookItAPI.swift in Sources */,
 				FBA3644E1E85A1CE0020F65F /* UserProfile.swift in Sources */,
 				FBA364501E85A4460020F65F /* Settings.swift in Sources */,
+				FB7906641E8700E200E07CAA /* RecipesSearchTableViewController.swift in Sources */,
 				FBCCBCFF1E83764500791708 /* CookIt.xcdatamodeld in Sources */,
 				FBCCBCF91E83764500791708 /* ViewController.swift in Sources */,
 				FBCCBD2A1E837BE100791708 /* Recipe.swift in Sources */,
 				FBCCBCF71E83764500791708 /* AppDelegate.swift in Sources */,
 				FBCCBD251E8376D400791708 /* GCDBlackBox.swift in Sources */,
+				FB79066A1E873CAF00E07CAA /* RecipeTableViewCell.swift in Sources */,
 				FBA364521E85A6B90020F65F /* ConstantsGeneral.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

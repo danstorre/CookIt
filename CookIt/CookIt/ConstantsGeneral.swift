@@ -12,12 +12,18 @@ import Foundation
 struct ConstantsGeneral {
     
     
+    struct Messages{
+        static let messageError = "sorry, please try again"
+    }
+    
     enum Cuisine : String {
         case emptyString = ""
         case african, chinese, japanese, korean, vietnamese, thai, indian, british, irish, french, italian, mexican, spanish, jewish, american, cajun, southern, greek, german, nordic, caribbean
         case middleEastern = "middle eastern"
         case easternEuropean = "eastern european"
         case latinAmerican = "latin american"
+        
+        
         
     }
     
@@ -53,3 +59,17 @@ struct ConstantsGeneral {
     
     
 }
+
+
+//Helper standalone methods
+
+func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
+    var i = 0
+    return AnyIterator {
+        let next = withUnsafeBytes(of: &i) { $0.load(as: T.self) }
+        if next.hashValue != i { return nil }
+        i += 1
+        return next
+    }
+}
+
