@@ -96,10 +96,11 @@ private extension RecipesSearchTableViewController {
                     return sendError()
                 }
                 
-                guard let recipes = recipes else {
+                guard var recipes = recipes else {
                     return sendError()
                 }
                 
+                recipes = recipes.sorted(by: {$0.0.title! < $0.1.title! })
                 self.items = (recipes as AnyObject) as? [AnyObject]
                 
                 self.activity.stopAnimating()
@@ -117,6 +118,10 @@ private extension RecipesSearchTableViewController {
     
     
     func searchImages(){
+        
+        guard self.items != nil else {
+            return
+        }
         
         for (index,recipe) in self.items!.enumerated() {
             func imageToSearch(imageString: String, count: Int, index: Int){
@@ -160,7 +165,11 @@ extension RecipesSearchTableViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        let numberOfRows = section == 0 ? 1 : items!.count
+        var itemsCount = 0
+        if let items = items {
+            itemsCount = items.count
+        }
+        let numberOfRows = section == 0 ? 1 : itemsCount
         
         return numberOfRows
     }
