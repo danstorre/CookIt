@@ -27,6 +27,7 @@ struct Recipe {
     var servings : Int?
     var instructions : String?
     
+    // complex recipe information
     var calories : Int?
     var protein : String?
     var fat : String?

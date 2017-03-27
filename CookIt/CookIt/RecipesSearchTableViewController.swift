@@ -19,7 +19,7 @@ class RecipesSearchTableViewController: UIViewController {
     let descriptions = ["Please choose your cuisine type","Choose your dish type","Here you go, choose your favourite!"]
     
     var option : Int?
-    
+    var recipeSelected : Recipe?
     var items : [AnyObject]?
     
     override func viewDidLoad() {
@@ -37,6 +37,16 @@ class RecipesSearchTableViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! RecipeInformationViewController
+        
+        vc.recipe = recipeSelected
+        
     }
     
 }
@@ -86,9 +96,13 @@ private extension RecipesSearchTableViewController {
             performUIUpdatesOnMain {
                 
                 func sendError(){
-                    return self.displayAlert(ConstantsGeneral.Messages.messageError, completionHandler: ({
-                        self.dismiss(animated: true, completion: nil)
-                    }))
+                    let alertViewController = UIAlertController(title: "Alert!", message: "Sorry try again later", preferredStyle: .alert)
+                    let okButton = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
+                        self.navigationController!.popToViewController((self.navigationController!.viewControllers.first)!, animated: true)
+                    })
+                    alertViewController.addAction(okButton)
+                    
+                    return self.present(alertViewController, animated: true, completion: nil)
                 }
                 
                 guard error == nil else {
@@ -221,6 +235,7 @@ extension RecipesSearchTableViewController : UITableViewDataSource {
         
     }
     
+    
 }
 
 
@@ -250,11 +265,17 @@ extension RecipesSearchTableViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard option! < 2 else {
+            
+            guard let items = items else {
+                return
+            }
+            
+            recipeSelected = items[indexPath.row] as! Recipe
+            performSegue(withIdentifier: "recipe", sender: nil)
+            
             return
         }
         
