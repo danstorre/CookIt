@@ -241,6 +241,10 @@ extension RecipeInformationViewController : UITableViewDelegate {
         
     }
     
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
 }
 
 
@@ -260,6 +264,10 @@ extension RecipeInformationViewController: UICollectionViewDelegate, UICollectio
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? MetaCollectionViewCell{
@@ -272,8 +280,9 @@ extension RecipeInformationViewController: UICollectionViewDelegate, UICollectio
                 cell.variable.text = dictRow.key
                 
                 if let boolValue = dictRow.value as? Bool{
-                    cell.checkImage!.isHidden = boolValue
-                    cell.uncheckedImage!.isHidden = !boolValue
+                    cell.checkImage!.isHidden = !boolValue
+                    cell.uncheckedImage!.isHidden = boolValue
+                    cell.value.isHidden = true
                 }
                 
                 if let intValue = dictRow.value as? Int{
@@ -296,7 +305,7 @@ extension RecipeInformationViewController: UICollectionViewDelegate, UICollectio
             }
             
             cell.nameLabel.text = recipe.ingredients![indexPath.item].name!
-            cell.quantityLabel.text = String(describing: recipe.ingredients![indexPath.item].amount!) + " " + recipe.ingredients![indexPath.item].unit!
+            cell.quantityLabel.text = recipe.ingredients![indexPath.item].originalString!
             
             guard let ingredients = recipe.ingredients else {
                 return cell

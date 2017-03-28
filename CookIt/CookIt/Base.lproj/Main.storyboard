@@ -320,7 +320,7 @@
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5  teaspoons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F9B-cg-ZmW">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.5  teaspoons" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F9B-cg-ZmW">
                                                                                 <rect key="frame" x="0.0" y="23" width="157.5" height="18"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -340,6 +340,9 @@
                                                             <constraints>
                                                                 <constraint firstItem="gjf-Pv-3IJ" firstAttribute="leading" secondItem="9eV-A9-WVp" secondAttribute="leading" id="5Th-AE-QWd"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="gjf-Pv-3IJ" secondAttribute="trailing" id="Ge5-7T-EAt"/>
+                                                                <constraint firstItem="F9B-cg-ZmW" firstAttribute="leading" secondItem="A08-Yd-XjP" secondAttribute="leadingMargin" constant="2.5" id="K1H-6c-3kz"/>
+                                                                <constraint firstAttribute="trailingMargin" secondItem="F9B-cg-ZmW" secondAttribute="trailing" id="LJ1-gu-n1D"/>
+                                                                <constraint firstAttribute="bottomMargin" secondItem="F9B-cg-ZmW" secondAttribute="bottom" id="UyU-6i-FA4"/>
                                                                 <constraint firstItem="9eV-A9-WVp" firstAttribute="top" secondItem="A08-Yd-XjP" secondAttribute="topMargin" constant="-8" id="ljB-wg-xYp"/>
                                                                 <constraint firstAttribute="bottomMargin" secondItem="gjf-Pv-3IJ" secondAttribute="bottom" id="qzK-Yc-5Iu"/>
                                                                 <constraint firstItem="9eV-A9-WVp" firstAttribute="centerX" secondItem="A08-Yd-XjP" secondAttribute="centerX" id="rd6-z2-2U7"/>
@@ -372,10 +375,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="383" height="319.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STEP 1" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wLP-Tf-yCD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STEP 1" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wLP-Tf-yCD">
                                                     <rect key="frame" x="28" y="18" width="327" height="283.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
