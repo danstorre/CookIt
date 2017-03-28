@@ -13,6 +13,7 @@ class MetaCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var variable: UILabel!
     @IBOutlet weak var value: UILabel!
     @IBOutlet weak var checkImage: UIImageView!
+    @IBOutlet weak var uncheckedImage: UIImageView!
     
     
     override var isSelected: Bool {

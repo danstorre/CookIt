@@ -138,6 +138,27 @@ extension RecipeInformationViewController : UITableViewDataSource {
             
             cellHeader.nameLabel.text = recipe.title
             
+            guard recipe.image == nil else {
+                return cellHeader
+            }
+            
+            DispatchQueue.global().async {
+            
+                CookItAPI.shared.getImage(by: String(describing: recipe.id!), with: ConstantsGeneral.ImageSize.l,
+                completionHandlerForGettingImage: { (image, error) in
+                
+                    performUIUpdatesOnMain {
+                    guard error == nil else {
+                        return
+                    }
+                        
+                    self.recipe!.image = image
+                    self.tableView.reloadRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.fade)
+                    }
+                    
+                })
+            }
+            
             return cellHeader
             
         case .metaData :
@@ -183,7 +204,6 @@ extension RecipeInformationViewController : UITableViewDataSource {
             
             cellMetaInfoRecipe.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
             
-            
         case .ingredients :
             
             guard let cellIngredients = cell as? CollectionRowRecipeTableViewCell else {return}
@@ -195,6 +215,31 @@ extension RecipeInformationViewController : UITableViewDataSource {
         }
     }
     
+    
+}
+
+extension RecipeInformationViewController : UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        let sectionInfo = SectionInformation.init(rawValue: indexPath.section)!
+        switch sectionInfo {
+            
+            case .header :
+                return 242
+            
+            case .metaData :
+                return 140
+            
+            case .ingredients :
+                return 400
+            
+            case .steps :
+                return 600
+        
+        }
+        
+    }
     
 }
 
@@ -224,17 +269,19 @@ extension RecipeInformationViewController: UICollectionViewDelegate, UICollectio
                 guard index == indexPath.row else {
                     continue
                 }
-                
                 cell.variable.text = dictRow.key
                 
                 if let boolValue = dictRow.value as? Bool{
-                    cell.checkImage.isHidden = boolValue
+                    cell.checkImage!.isHidden = boolValue
+                    cell.uncheckedImage!.isHidden = !boolValue
                 }
                 
-                if let stringValue = dictRow.value as? String{
-                    cell.value.text = stringValue
+                if let intValue = dictRow.value as? Int{
+                    cell.value.text = String(intValue)
+                    cell.value.isHidden = false
+                    cell.checkImage!.isHidden = true
+                    cell.uncheckedImage!.isHidden = true
                 }
-                
             }
             
             return cell
@@ -248,14 +295,45 @@ extension RecipeInformationViewController: UICollectionViewDelegate, UICollectio
                 return cell
             }
             
-            cell.nameLabel.text = recipe.ingredients![indexPath.item].name
-            cell.quantityLabel.text = String(describing: recipe.ingredients![indexPath.item].amount) + recipe.ingredients![indexPath.item].unit!
+            cell.nameLabel.text = recipe.ingredients![indexPath.item].name!
+            cell.quantityLabel.text = String(describing: recipe.ingredients![indexPath.item].amount!) + " " + recipe.ingredients![indexPath.item].unit!
+            
+            guard let ingredients = recipe.ingredients else {
+                return cell
+            }
+            
+            guard self.recipe!.ingredients![indexPath.item].image == nil else {
+                
+                cell.imageIngredient.image = self.recipe!.ingredients![indexPath.item].image
+                return cell
+            }
+            
+            DispatchQueue.global().async {
+                
+                CookItAPI.shared.getImage(byIngredient: ingredients[indexPath.item].stringImage!, with: ConstantsGeneral.ImageSize.m,
+                    completionHandlerForGettingImage: { (image, error) in
+                                            
+                    performUIUpdatesOnMain {
+                        guard error == nil else {
+                            return
+                        }
+                        self.recipe!.ingredients![indexPath.item].image = image
+                        
+                        collectionView.reloadItems(at: [indexPath])
+                    }
+                        
+                })
+                
+            }
             
             return cell
         }
         
         return UICollectionViewCell()
     }
+    
+    
+    
     
 }
 

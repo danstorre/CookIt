@@ -272,8 +272,10 @@ extension RecipesSearchTableViewController : UITableViewDelegate {
             guard let items = items else {
                 return
             }
-            
-            recipeSelected = items[indexPath.row] as! Recipe
+                   
+            var recipeToTransfer = items[indexPath.row] as! Recipe
+            recipeToTransfer.image = nil
+            recipeSelected = recipeToTransfer
             performSegue(withIdentifier: "recipe", sender: nil)
             
             return

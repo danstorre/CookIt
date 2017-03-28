@@ -18,6 +18,7 @@ struct APIConstants {
         static let apiHost = "spoonacular-recipe-food-nutrition-v1.p.mashape.com"
         static let mashapeKey = Credentials.mashapeKey
         static let hostRecipeImages = "https://spoonacular.com/recipeImages/"
+        static let hostIngredientImages = "https://spoonacular.com/cdn/"
         
     }
     
