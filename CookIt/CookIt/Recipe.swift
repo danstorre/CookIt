@@ -125,4 +125,29 @@ struct Recipe {
         
         return recipesToReturn
     }
+    
+    
+    static func toRecipe(from dbRecipe: DBRecipe) -> Recipe{
+        
+        var recipe = Recipe()
+        
+        recipe.id = Int(dbRecipe.id)
+        recipe.title = dbRecipe.title
+        recipe.readyInMinutes = Int(dbRecipe.readyInMinutes)
+        recipe.baseUri = dbRecipe.baseUri
+        recipe.vegetarian = dbRecipe.vegetarian
+        recipe.glutenFree = dbRecipe.glutenFree
+        recipe.cheap = dbRecipe.cheap
+        recipe.sustainable = dbRecipe.sustainable
+        recipe.servings = Int(dbRecipe.servings)
+        recipe.calories = Int(dbRecipe.calories)
+        recipe.protein = dbRecipe.protein
+        recipe.fat = dbRecipe.fat
+        recipe.carbs = dbRecipe.carbs
+        recipe.instructions = dbRecipe.instructions
+        recipe.imageString = dbRecipe.imageString
+        
+        return recipe
+    
+    }
 }

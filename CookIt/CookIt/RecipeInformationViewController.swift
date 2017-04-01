@@ -29,6 +29,9 @@ class RecipeInformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let rightButton = UIBarButtonItem(title: "save", style: .done, target: self, action: #selector(RecipeInformationViewController.save))
+        
+        self.navigationItem.setRightBarButton(rightButton, animated: false)
         searchRecipeInformation()
         // Do any additional setup after loading the view.
     }
@@ -36,6 +39,13 @@ class RecipeInformationViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func save(){
+       _ = DBRecipe.insertOrUpdate(with: self.recipe!, context: CoreDataStack.shared.context)
+        
+       CoreDataStack.shared.save()
+        
     }
 }
 

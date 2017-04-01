@@ -17,6 +17,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        guard !UserDefaults.standard.bool(forKey: "didLaunchBefore") else {
+            return true
+        }
+        UserDefaults.standard.set(true, forKey: "didLaunchBefore")
+        // Remove previous stuff (if any)
+        do {
+            try CoreDataStack.shared.dropAllData()
+        } catch {
+            print("Error droping all objects in DB")
+        }
+        
         return true
     }
 

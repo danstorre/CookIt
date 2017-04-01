@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB1747001E8CABC400641B20 /* DBRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1746FF1E8CABC400641B20 /* DBRecipe.swift */; };
+		FB1747031E8DCD3100641B20 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1747021E8DCD3100641B20 /* CoreDataStack.swift */; };
 		FB7906641E8700E200E07CAA /* RecipesSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7906631E8700E200E07CAA /* RecipesSearchTableViewController.swift */; };
 		FB7906661E87106D00E07CAA /* HeaderCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7906651E87106D00E07CAA /* HeaderCellTableViewCell.swift */; };
 		FB7906681E8720BD00E07CAA /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB7906671E8720BD00E07CAA /* ExtensionViewController.swift */; };
@@ -35,6 +37,10 @@
 		FBCCBD261E8376D400791708 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD211E8376D400791708 /* Network.swift */; };
 		FBCCBD2A1E837BE100791708 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD291E837BE100791708 /* Recipe.swift */; };
 		FBCCBD2C1E83867900791708 /* CookItAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBD2B1E83867900791708 /* CookItAPITest.swift */; };
+		FBDE0D191E9029CA004F628D /* MyRecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE0D181E9029CA004F628D /* MyRecipeCollectionViewCell.swift */; };
+		FBDE0D1B1E902DDE004F628D /* CoreDataCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE0D1A1E902DDE004F628D /* CoreDataCollectionViewController.swift */; };
+		FBDE0D1D1E902E92004F628D /* MyRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE0D1C1E902E92004F628D /* MyRecipesViewController.swift */; };
+		FBDE0D1F1E9059C7004F628D /* DBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE0D1E1E9059C7004F628D /* DBImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FB1746FF1E8CABC400641B20 /* DBRecipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBRecipe.swift; sourceTree = "<group>"; };
+		FB1747021E8DCD3100641B20 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FB7906631E8700E200E07CAA /* RecipesSearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesSearchTableViewController.swift; sourceTree = "<group>"; };
 		FB7906651E87106D00E07CAA /* HeaderCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderCellTableViewCell.swift; sourceTree = "<group>"; };
 		FB7906671E8720BD00E07CAA /* ExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +88,10 @@
 		FBCCBD211E8376D400791708 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		FBCCBD291E837BE100791708 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		FBCCBD2B1E83867900791708 /* CookItAPITest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CookItAPITest.swift; sourceTree = "<group>"; };
+		FBDE0D181E9029CA004F628D /* MyRecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		FBDE0D1A1E902DDE004F628D /* CoreDataCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataCollectionViewController.swift; sourceTree = "<group>"; };
+		FBDE0D1C1E902E92004F628D /* MyRecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipesViewController.swift; sourceTree = "<group>"; };
+		FBDE0D1E1E9059C7004F628D /* DBImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,9 +182,11 @@
 		FBCCBD191E83764E00791708 /* View Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FBDE0D1A1E902DDE004F628D /* CoreDataCollectionViewController.swift */,
 				FB7906671E8720BD00E07CAA /* ExtensionViewController.swift */,
 				FB7906631E8700E200E07CAA /* RecipesSearchTableViewController.swift */,
 				FB7906711E87F96000E07CAA /* RecipeInformationViewController.swift */,
+				FBDE0D1C1E902E92004F628D /* MyRecipesViewController.swift */,
 			);
 			name = "View Controller";
 			sourceTree = "<group>";
@@ -180,6 +194,7 @@
 		FBCCBD1A1E83765600791708 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FBDE0D171E902997004F628D /* MyRecipes */,
 				FB79066C1E87F60300E07CAA /* Recipe Information */,
 				FB79066B1E87F5F100E07CAA /* SearchRecipesTableView */,
 			);
@@ -199,6 +214,7 @@
 		FBCCBD1C1E83766000791708 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FBEF1FF61E8B2B2B00C396F6 /* core data */,
 				FBCCBD1D1E8376D400791708 /* APIConstants.swift */,
 				FBCCBD1F1E8376D400791708 /* Credentials.swift */,
 				FBCCBD291E837BE100791708 /* Recipe.swift */,
@@ -208,6 +224,24 @@
 				FBA364511E85A6B90020F65F /* ConstantsGeneral.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		FBDE0D171E902997004F628D /* MyRecipes */ = {
+			isa = PBXGroup;
+			children = (
+				FBDE0D181E9029CA004F628D /* MyRecipeCollectionViewCell.swift */,
+			);
+			name = MyRecipes;
+			sourceTree = "<group>";
+		};
+		FBEF1FF61E8B2B2B00C396F6 /* core data */ = {
+			isa = PBXGroup;
+			children = (
+				FB1747021E8DCD3100641B20 /* CoreDataStack.swift */,
+				FB1746FF1E8CABC400641B20 /* DBRecipe.swift */,
+				FBDE0D1E1E9059C7004F628D /* DBImage.swift */,
+			);
+			name = "core data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,20 +358,26 @@
 				FBCCBD261E8376D400791708 /* Network.swift in Sources */,
 				FBCCBD231E8376D400791708 /* CookItAPI.swift in Sources */,
 				FBA3644E1E85A1CE0020F65F /* UserProfile.swift in Sources */,
+				FBDE0D1F1E9059C7004F628D /* DBImage.swift in Sources */,
 				FBA364501E85A4460020F65F /* Settings.swift in Sources */,
 				FB7906721E87F96000E07CAA /* RecipeInformationViewController.swift in Sources */,
 				FB7906641E8700E200E07CAA /* RecipesSearchTableViewController.swift in Sources */,
 				FBCCBCFF1E83764500791708 /* CookIt.xcdatamodeld in Sources */,
+				FBDE0D1B1E902DDE004F628D /* CoreDataCollectionViewController.swift in Sources */,
 				FB7906761E884AFB00E07CAA /* MetaCollectionViewCell.swift in Sources */,
 				FBCCBCF91E83764500791708 /* ViewController.swift in Sources */,
 				FBCCBD2A1E837BE100791708 /* Recipe.swift in Sources */,
+				FBDE0D191E9029CA004F628D /* MyRecipeCollectionViewCell.swift in Sources */,
 				FB79066E1E87F68200E07CAA /* HeaderInformationTableViewCell.swift in Sources */,
 				FB7906701E87F70500E07CAA /* CollectionRowRecipeTableViewCell.swift in Sources */,
 				FBCCBCF71E83764500791708 /* AppDelegate.swift in Sources */,
 				FBCCBD251E8376D400791708 /* GCDBlackBox.swift in Sources */,
+				FB1747031E8DCD3100641B20 /* CoreDataStack.swift in Sources */,
 				FB79066A1E873CAF00E07CAA /* RecipeTableViewCell.swift in Sources */,
+				FBDE0D1D1E902E92004F628D /* MyRecipesViewController.swift in Sources */,
 				FB7906781E887C3500E07CAA /* IngredientCollectionViewCell.swift in Sources */,
 				FBA364521E85A6B90020F65F /* ConstantsGeneral.swift in Sources */,
+				FB1747001E8CABC400641B20 /* DBRecipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
