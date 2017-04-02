@@ -40,7 +40,7 @@
 		FBDE0D1B1E902DDE004F628D /* CoreDataCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE0D1A1E902DDE004F628D /* CoreDataCollectionViewController.swift */; };
 		FBDE0D1D1E902E92004F628D /* MyRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE0D1C1E902E92004F628D /* MyRecipesViewController.swift */; };
 		FBDE0D1F1E9059C7004F628D /* DBImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE0D1E1E9059C7004F628D /* DBImage.swift */; };
-		FBDE0D211E916991004F628D /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE0D201E916991004F628D /* Credentials.swift */; };
+		FBDE0D251E917B33004F628D /* Credentials_.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBDE0D241E917B33004F628D /* Credentials_.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +91,7 @@
 		FBDE0D1A1E902DDE004F628D /* CoreDataCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataCollectionViewController.swift; sourceTree = "<group>"; };
 		FBDE0D1C1E902E92004F628D /* MyRecipesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRecipesViewController.swift; sourceTree = "<group>"; };
 		FBDE0D1E1E9059C7004F628D /* DBImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBImage.swift; sourceTree = "<group>"; };
-		FBDE0D201E916991004F628D /* Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		FBDE0D241E917B33004F628D /* Credentials_.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credentials_.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,11 +217,11 @@
 				FBEF1FF61E8B2B2B00C396F6 /* core data */,
 				FBCCBD1D1E8376D400791708 /* APIConstants.swift */,
 				FBCCBD291E837BE100791708 /* Recipe.swift */,
-				FBDE0D201E916991004F628D /* Credentials.swift */,
 				FBA3644B1E857CB60020F65F /* Ingredient.swift */,
 				FBA3644D1E85A1CE0020F65F /* UserProfile.swift */,
 				FBA3644F1E85A4460020F65F /* Settings.swift */,
 				FBA364511E85A6B90020F65F /* ConstantsGeneral.swift */,
+				FBDE0D241E917B33004F628D /* Credentials_.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -358,9 +358,9 @@
 				FBCCBD231E8376D400791708 /* CookItAPI.swift in Sources */,
 				FBA3644E1E85A1CE0020F65F /* UserProfile.swift in Sources */,
 				FBDE0D1F1E9059C7004F628D /* DBImage.swift in Sources */,
+				FBDE0D251E917B33004F628D /* Credentials_.swift in Sources */,
 				FBA364501E85A4460020F65F /* Settings.swift in Sources */,
 				FB7906721E87F96000E07CAA /* RecipeInformationViewController.swift in Sources */,
-				FBDE0D211E916991004F628D /* Credentials.swift in Sources */,
 				FB7906641E8700E200E07CAA /* RecipesSearchTableViewController.swift in Sources */,
 				FBCCBCFF1E83764500791708 /* CookIt.xcdatamodeld in Sources */,
 				FBDE0D1B1E902DDE004F628D /* CoreDataCollectionViewController.swift in Sources */,
