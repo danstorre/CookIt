@@ -33,7 +33,7 @@ class RecipeInformationViewController: UIViewController {
         
         self.navigationItem.setRightBarButton(rightButton, animated: false)
         searchRecipeInformation()
-        // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,13 +60,11 @@ extension RecipeInformationViewController {
             performUIUpdatesOnMain {
                 
                 func sendError(){
-                    let alertViewController = UIAlertController(title: "Alert!", message: "Sorry try again later", preferredStyle: .alert)
-                    let okButton = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-                        self.navigationController!.popToViewController((self.navigationController!.viewControllers.first)!, animated: true)
+                    return self.displayMessage("Connection Failed", "Your internet is disconnected", completionHandler: {
+                        performUIUpdatesOnMain {
+                            self.navigationController!.popToViewController((self.navigationController!.viewControllers.first)!, animated: true)
+                        }
                     })
-                    alertViewController.addAction(okButton)
-                    
-                    return self.present(alertViewController, animated: true, completion: nil)
                 }
                 
                 guard error == nil else {
@@ -142,13 +140,16 @@ extension RecipeInformationViewController : UITableViewDataSource {
         case .header :
             let cellHeader = tableView.dequeueReusableCell(withIdentifier: "header") as! HeaderInformationTableViewCell
             
+            cellHeader.activity.isHidden = false
             if let image = recipe.image {
                 cellHeader.imageRecipe.image = image
+                cellHeader.activity.isHidden = true
             }
             
             cellHeader.nameLabel.text = recipe.title
             
             guard recipe.image == nil else {
+               
                 return cellHeader
             }
             
@@ -159,6 +160,8 @@ extension RecipeInformationViewController : UITableViewDataSource {
                 
                     performUIUpdatesOnMain {
                     guard error == nil else {
+                        self.recipe!.image = #imageLiteral(resourceName: "noimage")
+                        self.tableView.reloadRows(at: [indexPath as IndexPath], with: UITableViewRowAnimation.fade)
                         return
                     }
                         
@@ -309,7 +312,6 @@ extension RecipeInformationViewController: UICollectionViewDelegate, UICollectio
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as? IngredientCollectionViewCell
         {
-            
             guard let recipe = recipe else {
                 return cell
             }
@@ -322,7 +324,6 @@ extension RecipeInformationViewController: UICollectionViewDelegate, UICollectio
             }
             
             guard self.recipe!.ingredients![indexPath.item].image == nil else {
-                
                 cell.imageIngredient.image = self.recipe!.ingredients![indexPath.item].image
                 return cell
             }
@@ -334,10 +335,11 @@ extension RecipeInformationViewController: UICollectionViewDelegate, UICollectio
                                             
                     performUIUpdatesOnMain {
                         guard error == nil else {
+                            self.recipe!.ingredients![indexPath.item].image = #imageLiteral(resourceName: "noimage")
+                            collectionView.reloadItems(at: [indexPath])
                             return
                         }
                         self.recipe!.ingredients![indexPath.item].image = image
-                        
                         collectionView.reloadItems(at: [indexPath])
                     }
                         

@@ -24,7 +24,6 @@
 		FBA364501E85A4460020F65F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA3644F1E85A4460020F65F /* Settings.swift */; };
 		FBA364521E85A6B90020F65F /* ConstantsGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA364511E85A6B90020F65F /* ConstantsGeneral.swift */; };
 		FBCCBCF71E83764500791708 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBCF61E83764500791708 /* AppDelegate.swift */; };
-		FBCCBCF91E83764500791708 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBCF81E83764500791708 /* ViewController.swift */; };
 		FBCCBCFC1E83764500791708 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FBCCBCFA1E83764500791708 /* Main.storyboard */; };
 		FBCCBCFF1E83764500791708 /* CookIt.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FBCCBCFD1E83764500791708 /* CookIt.xcdatamodeld */; };
 		FBCCBD011E83764500791708 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBCCBD001E83764500791708 /* Assets.xcassets */; };
@@ -72,7 +71,6 @@
 		FBA364511E85A6B90020F65F /* ConstantsGeneral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstantsGeneral.swift; sourceTree = "<group>"; };
 		FBCCBCF31E83764500791708 /* CookIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCCBCF61E83764500791708 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FBCCBCF81E83764500791708 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FBCCBCFB1E83764500791708 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FBCCBCFE1E83764500791708 /* CookIt.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CookIt.xcdatamodel; sourceTree = "<group>"; };
 		FBCCBD001E83764500791708 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,7 +157,6 @@
 				FBCCBD1B1E83765B00791708 /* View Model */,
 				FBCCBD1C1E83766000791708 /* Model */,
 				FBCCBCF61E83764500791708 /* AppDelegate.swift */,
-				FBCCBCF81E83764500791708 /* ViewController.swift */,
 				FBCCBCFA1E83764500791708 /* Main.storyboard */,
 				FBCCBD001E83764500791708 /* Assets.xcassets */,
 				FBCCBD021E83764500791708 /* LaunchScreen.storyboard */,
@@ -365,7 +362,6 @@
 				FBCCBCFF1E83764500791708 /* CookIt.xcdatamodeld in Sources */,
 				FBDE0D1B1E902DDE004F628D /* CoreDataCollectionViewController.swift in Sources */,
 				FB7906761E884AFB00E07CAA /* MetaCollectionViewCell.swift in Sources */,
-				FBCCBCF91E83764500791708 /* ViewController.swift in Sources */,
 				FBCCBD2A1E837BE100791708 /* Recipe.swift in Sources */,
 				FBDE0D191E9029CA004F628D /* MyRecipeCollectionViewCell.swift in Sources */,
 				FB79066E1E87F68200E07CAA /* HeaderInformationTableViewCell.swift in Sources */,

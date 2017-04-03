@@ -12,6 +12,9 @@ import CoreData
 
 class MyRecipesViewController: CoreDataCollectionViewController{
     
+    
+    var recipeSelected : Recipe? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,6 +22,11 @@ class MyRecipesViewController: CoreDataCollectionViewController{
         executeSearch()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureFetchedResultsController()
+        executeSearch()
+    }
     
     func configureFetchedResultsController(){
         
@@ -34,6 +42,16 @@ class MyRecipesViewController: CoreDataCollectionViewController{
         fetchedResultsController?.delegate = self
         
     }
+    
+    //MARK :- NAVIGATION
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! RecipeInformationViewController
+        
+        vc.recipe = recipeSelected
+        
+    }
 
 }
 
@@ -41,10 +59,10 @@ extension MyRecipesViewController : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let context = fetchedResultsController?.managedObjectContext,
-            let dbRecipe = fetchedResultsController?.object(at: indexPath) as? DBRecipe
+        if let dbRecipe = fetchedResultsController?.object(at: indexPath) as? DBRecipe
         {
-            context.delete(dbRecipe)
+            recipeSelected = Recipe.toRecipe(from: dbRecipe)
+            self.performSegue(withIdentifier: "recipeInfo", sender: self)
         }
     }
 }

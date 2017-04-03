@@ -96,13 +96,11 @@ private extension RecipesSearchTableViewController {
             performUIUpdatesOnMain {
                 
                 func sendError(){
-                    let alertViewController = UIAlertController(title: "Alert!", message: "Sorry try again later", preferredStyle: .alert)
-                    let okButton = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
-                        self.navigationController!.popToViewController((self.navigationController!.viewControllers.first)!, animated: true)
+                    return self.displayMessage("Connection Failed", "Your internet is disconnected", completionHandler: {
+                        performUIUpdatesOnMain {
+                            self.navigationController!.popToViewController((self.navigationController!.viewControllers.first)!, animated: true)
+                        }
                     })
-                    alertViewController.addAction(okButton)
-                    
-                    return self.present(alertViewController, animated: true, completion: nil)
                 }
                 
                 guard error == nil else {
@@ -141,6 +139,15 @@ private extension RecipesSearchTableViewController {
                 CookItAPI.shared.getImage(by: imageString, with: ConstantsGeneral.ImageSize.xxs, completionHandlerForGettingImage: { (image,error) in
                     
                     guard error == nil else {
+                        var recipeFromIndex = self.items![index] as! Recipe
+                        recipeFromIndex.image = #imageLiteral(resourceName: "noimage")
+                        self.items![index] = recipeFromIndex as AnyObject
+                        
+                        performUIUpdatesOnMain {
+                            let indexPathToReload = IndexPath(row: index, section: 1)
+                            self.tableView.reloadRows(at: [indexPathToReload], with: UITableViewRowAnimation.fade)
+                        }
+                        
                         return
                     }
                    
@@ -224,11 +231,13 @@ extension RecipesSearchTableViewController : UITableViewDataSource {
         
         cell.nameRecipe!.text = recipe.title
         cell.descriptionRecipe!.text = "ready in \(recipe.readyInMinutes!) min"
+        cell.activity.isHidden = false
         
         if let image = recipe.image {
             cell.imageViewRecipe!.image = image
             cell.imageViewRecipe!.contentMode = UIViewContentMode.scaleAspectFit
             cell.imageViewRecipe!.clipsToBounds = true
+            cell.activity.isHidden = true
         }
         
         return cell

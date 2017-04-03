@@ -12,6 +12,7 @@ class HeaderInformationTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var imageRecipe: UIImageView!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
